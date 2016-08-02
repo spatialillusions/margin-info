@@ -7,6 +7,8 @@
 
 <title>Test of margin-info</title>
 
+	<script src="../dist/griddeclinationdiagram.js">
+	</script>
 	<script src="../dist/scalebar.js">
 	</script>
 	<script src="../dist/slopeguide.js">
@@ -23,6 +25,10 @@
 	</script>
 </head>
 <body onload="init()">
+<h3>Grid Declination Diagram</h3>
+<script>
+document.write(griddeclinationdiagram(0.6,3.6,2016,'','black'));
+</script><br>
 
 <h3>Scale bar</h3>
 Scale: 1:<input type="text" id="Scale" value="50000" onkeyup="init()"><br>

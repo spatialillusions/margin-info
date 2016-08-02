@@ -5,19 +5,31 @@ Library for generating margin information for maps in SVG format.
 
 Using the fact that you can use real world units, like centimeter and milimeter, in SVG elements makes it possible to create all scale based elements around your map directly with SVG. The following elements has been created with NGA's Cartographers Handbook as a guide for look and feel.
 
+### Grid Declination Diagram
+
+![Figure 13](docs/griddeclinationdiagram.png?raw=true)
+
 ### Scale bar
 
 ![Figure 13](docs/scalebar.png?raw=true)
 
 ### Slope guide
 
-
 ![Figure 13](docs/slopeguide.png?raw=true)
-
 
 
 ## Usage
 The library contains two javascript functions, one for generating a scale bar, and one for generating a slope guide, they are located in the dist folder.
+
+### griddeclinationdiagram(TrueNorth,MagneticNorth,year,zone,color)
+
+The grid declination diagram function, is called with five parameters:
+
+ - TrueNorth, the true north direction, degrees.
+ - MagneticNorth, the magnetic north direction, degrees.
+ - year, the year the diagram is calculated for.
+ - zone, the UTM zone.
+ - color, the color of the diagram.
 
 ### scalebar(scale,showkm,showmiles,shownautical)
 
