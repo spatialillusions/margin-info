@@ -39,7 +39,7 @@ The scale bar function is called with four parameters:
  - showkm, if kilometer scale bar should be shown, bool.
  - showmiles, if miles scale bar should be shown, bool.
  - shownautical, if nautical miles scale bar should be shown, bool.
- 
+
 The function returns a string representing the SVG as XML and it can be inserted into any element.
 
 ### slopeguide(scale,contourInterval)
@@ -48,8 +48,28 @@ The slope guide function is called with two parameters:
 
  - scale, the scale you want your scale bar to represent. (The inverted scale is used here, so if you want 1:50 000, you set it to 50000)
  - countourInterval, that is the contour interval in meters that you want your slope guide to show.
- 
+
 The function returns a string representing the SVG as XML and it can be inserted into any element.
+
+## Node Version
+
+A command line version written for Node can be used to generate SVG files on disk.
+
+To install
+
+``` console
+npm -g install
+```
+
+Sample usage
+
+```
+margin-info usage
+
+margin-info scalebar 50000  true true true
+margin-info slope 50000 40
+margin-info grid  0.6   3.6 2016 11S black
+```
 
 ## License and Contact
 The library is developed by Måns Beckman, www.spatialillusions.com, and is provided under a MIT License.

@@ -1,0 +1,32 @@
+{
+  "name": "margin-info",
+  "version": "1.0.0",
+  "description": "Library for generating margin information for maps in SVG format.",
+  "main": "dist/margin-info.js",
+  "bin": {
+    "margin-info": "./dist/margin-info.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "dist/margin-info.js usage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spatialillusions/margin-info.git"
+  },
+  "keywords": [
+    "grid",
+    "slope",
+    "scale",
+    "bar",
+    "svg"
+  ],
+  "author": "spatialillusions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spatialillusions/margin-info/issues"
+  },
+  "homepage": "https://github.com/spatialillusions/margin-info#readme"
+}
