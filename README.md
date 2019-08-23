@@ -69,6 +69,74 @@ margin-info usage
 margin-info scalebar 50000  true true true
 margin-info slope 50000 40
 margin-info grid  0.6   3.6 2016 11S black
+
+
+margin-info scalebar 50000  true true true
+margin-info slope 50000 40
+margin-info grid  0.6   3.6 2016 11S black
+```
+
+## Serverless or AWS Lambda Version
+
+As well as using the command line, the Javascript code for generating SVGs can be run without setting up any web servers.  This section describes both testing locally using `serverless invoke local` from  [Serverless.com](https://serverless.com) and testing on an [AWS Lambda](https://aws.amazon.com/lambda/) configuration.
+
+* For details on the command line reference for Serverless, see
+https://serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/
+* For AWS command line options, type in your shell, `aws lambda invoke help`
+
+#### Testing from the `serverless` command line
+
+```
+# Serverless commands
+npm install -g serverless
+# serverless create --template aws-nodejs --path ./test-path/
+
+cd dist
+
+# Get JSON response back to shell
+serverless invoke local -f margininfo --data '{"method": "scalebar", "args": [50000, true, true, true] }'
+serverless invoke local -f margininfo --data '{"method": "slope", "args":[50000, 40] }'
+serverless invoke local -f margininfo --data '{"method": "grid", "args": [0.6, 3.6, "2016", "11S", "black"] }'
+
+# Save SVG
+serverless invoke local -f margininfo --data '{"method": "scalebar", "args": [50000, true, true, true] }' \
+  | json body > scalebar.svg
+
+serverless invoke local -f margininfo --data '{"method": "slope", "args":[50000, 40] }' \
+  | json body > slope.svg
+
+serverless invoke local -f margininfo --data '{"method": "grid", "args": [0.6, 3.6, "2016", "11S", "black"] }' \
+  | json body > grid.svg
+```
+
+#### Testing from the `aws` command line
+
+```
+
+# AWS commands
+npm install aws-sdk -g  # for `aws`
+npm install json -g     # for `json`
+
+# list your lambda functions on your AWS accoutns
+aws lambda list-functions
+
+# Pass in parameters and save the response
+aws lambda invoke --function-name margin-info \
+  --payload '{"method": "scalebar", "args": [50000, true, true, true] }' \
+  aws-lambda-response-scalebar.json
+
+aws lambda invoke --function-name margin-info \
+  --payload '{"method": "slope", "args":[50000, 40] }'  \
+  aws-lambda-response-slope.json
+
+aws lambda invoke --function-name margin-info \
+  --payload '{"method": "grid", "args": [0.6, 3.6, "2016", "11S", "black"] }'  \
+  aws-lambda-response-grid.json
+
+# extract the SVG from the response
+cat aws-lambda-response-scalebar.json | json body > scalebar.svg
+cat aws-lambda-response-slope.json | json body > slope.svg
+cat aws-lambda-response-grid.json | json body > grid.svg
 ```
 
 ## License and Contact
