@@ -90,62 +90,62 @@ function scalebar(scale,showkm,showmiles,shownautical){
 	//svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+',4 l 100,0" />';
 
 
-	svg += '<text stroke="none" fill="black" x="'+center+'" y="4" style="text-anchor:middle;font-size:'+(9*point)+';font-family:'+font+';font-weight:bold;">Scale 1:' + scale + '</text>';
 	
+	svg += '<text stroke="none" fill="black" x="'+center+'" y="4" text-anchor="middle" font-size="'+(9*point)+'" font-family="'+font+'" font-weight="bold">Scale 1:' + scale + '</text>';
 	var offset = 9;
 
 	if(showkm){
-		svg += '<text stroke="none" fill="black" x="'+(zero-kmUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+kmStep+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero-kmUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+kmStep+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l -'+(kmUnit)+',0 0,0.7 '+(kmUnit)+',0" />';
 		for(var i = 1; i<=5; i=i+2){
 			svg += '<path stroke="none" fill="black" stroke-width="0.1" d="M '+(zero-kmUnit/5*i)+','+offset+' l '+(kmUnit/5)+',0 0,0.7 -'+(kmUnit/5)+',0" />';
 		}
 		for (var i = 0; i<km;i++){
-			svg += '<text stroke="none" fill="black" x="'+(zero+i*kmUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+(kmStep<1?(i*kmStep).toPrecision(1):(i*kmStep))+'</text>';
+			svg += '<text stroke="none" fill="black" x="'+(zero+i*kmUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+(kmStep<1?(i*kmStep).toPrecision(1):(i*kmStep))+'</text>';
 			if(i%2!=0){
 				svg += '<path stroke="none" fill="black" d="M '+(zero+i*kmUnit)+','+offset+' l '+(kmUnit)+',0 0,0.7 -'+(kmUnit)+',0" />';
 			}
 		}
-		svg += '<text stroke="none" fill="black" x="'+(zero+i*kmUnit-1)+'" y="'+(offset-0.5)+'" style="text-anchor:left;font-size:'+(7*point)+';font-family:'+font+';">'+(kmStep<1?(i*kmStep).toPrecision(1):(i*kmStep))+' '+kmMeasureUnit+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero+i*kmUnit-1)+'" y="'+(offset-0.5)+'" text-anchor="left" font-size="'+(7*point)+'" font-family="'+font+'">'+(kmStep<1?(i*kmStep).toPrecision(1):(i*kmStep))+' '+kmMeasureUnit+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l '+(kmUnit*km)+',0 0,0.7 -'+(kmUnit*km)+',0" />';
 
 		offset += 4.8;
 	}
 	if(showmiles){
-		svg += '<text stroke="none" fill="black" x="'+(zero-milesUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+milesStep+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero-milesUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+milesStep+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l -'+(milesUnit)+',0 0,0.7 '+(milesUnit)+',0" />';
 		for(var i = 1; i<=5; i=i+2){
 			svg += '<path stroke="none" fill="black" stroke-width="0.1" d="M '+(zero-milesUnit/5*i)+',13.8 l '+(milesUnit/5)+',0 0,0.7 -'+(milesUnit/5)+',0" />';
 		}
 		for (var i = 0; i<miles;i++){
-			svg += '<text stroke="none" fill="black" x="'+(zero+i*milesUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+(milesStep<1?(i*milesStep).toPrecision(1):(i*milesStep))+'</text>';
+			svg += '<text stroke="none" fill="black" x="'+(zero+i*milesUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+(milesStep<1?(i*milesStep).toPrecision(1):(i*milesStep))+'</text>';
 			if(i%2!=0){
 				svg += '<path stroke="none" fill="black" d="M '+(zero+i*milesUnit)+','+offset+' l '+(milesUnit)+',0 0,0.7 -'+(milesUnit)+',0" />';
 			}		
 		}
-		svg += '<text stroke="none" fill="black" x="'+(zero+i*milesUnit-1)+'" y="'+(offset-0.5)+'" style="text-anchor:left;font-size:'+(7*point)+';font-family:'+font+';">'+(milesStep<1?(i*milesStep).toPrecision(1):(i*milesStep))+' '+milesMeasureUnit+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero+i*milesUnit-1)+'" y="'+(offset-0.5)+'" text-anchor="left" font-size="'+(7*point)+'" font-family="'+font+'">'+(milesStep<1?(i*milesStep).toPrecision(1):(i*milesStep))+' '+milesMeasureUnit+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l '+(milesUnit*miles)+',0 0,0.7 -'+(milesUnit*miles)+',0" />';
 
 		offset += 4.8;
 	}
 	if(shownautical){
-		svg += '<text stroke="none" fill="black" x="'+(zero-nauticalmilesUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+nauticalmilesStep+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero-nauticalmilesUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+nauticalmilesStep+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l -'+(nauticalmilesUnit)+',0 0,0.7 '+(nauticalmilesUnit)+',0" />';
 		for(var i = 1; i<=5; i=i+2){
 			svg += '<path stroke="none" fill="black" stroke-width="0.1" d="M '+(zero-nauticalmilesUnit/5*i)+','+offset+' l '+(nauticalmilesUnit/5)+',0 0,0.7 -'+(nauticalmilesUnit/5)+',0" />';
 		}
 		for (var i = 0; i<nauticalmiles;i++){
-			svg += '<text stroke="none" fill="black" x="'+(zero+i*nauticalmilesUnit)+'" y="'+(offset-0.5)+'" style="text-anchor:middle;font-size:'+(7*point)+';font-family:'+font+';">'+(nauticalmilesStep<1?(i*nauticalmilesStep).toPrecision(1):(i*nauticalmilesStep))+'</text>';
+			svg += '<text stroke="none" fill="black" x="'+(zero+i*nauticalmilesUnit)+'" y="'+(offset-0.5)+'" text-anchor="middle" font-size="'+(7*point)+'" font-family="'+font+'">'+(nauticalmilesStep<1?(i*nauticalmilesStep).toPrecision(1):(i*nauticalmilesStep))+'</text>';
 			if(i%2!=0){
 				svg += '<path stroke="none" fill="black" d="M '+(zero+i*nauticalmilesUnit)+','+offset+' l '+(nauticalmilesUnit)+',0 0,0.7 -'+(nauticalmilesUnit)+',0" />';
 			}	
 		}
-		svg += '<text stroke="none" fill="black" x="'+(zero+i*nauticalmilesUnit-1)+'" y="'+(offset-0.5)+'" style="text-anchor:left;font-size:'+(7*point)+';font-family:'+font+';">'+(nauticalmilesStep<1?(i*nauticalmilesStep).toPrecision(1):(i*nauticalmilesStep))+' '+nauticalmilesMeasureUnit+'</text>';
+		svg += '<text stroke="none" fill="black" x="'+(zero+i*nauticalmilesUnit-1)+'" y="'+(offset-0.5)+'" text-anchor="left" font-size="'+(7*point)+'" font-family="'+font+'">'+(nauticalmilesStep<1?(i*nauticalmilesStep).toPrecision(1):(i*nauticalmilesStep))+' '+nauticalmilesMeasureUnit+'</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+zero+','+offset+' l '+(nauticalmilesUnit*nauticalmiles)+',0 0,0.7 -'+(nauticalmilesUnit*nauticalmiles)+',0" />';
 	}
