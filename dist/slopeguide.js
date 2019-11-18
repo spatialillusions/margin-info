@@ -9,10 +9,10 @@ function slopeguide(scale,contourInterval){
 
 	var svg = '<svg width="'+width+'mm" height="'+height+'mm" viewBox="0 0 '+width+' '+height+'" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg">';
 
-	svg += '<text stroke="none" fill="black" x="'+center+'" y="4" style="text-anchor:middle;font-size:'+(9*point)+';font-family:'+font+';font-weight:bold;">SLOPE GUIDE</text>';
-	
-	svg += '<text stroke="none" fill="black" x="'+(center-2.5*1000*(contourInterval/((0.15)*scale)))+'" y="'+(4+2+(6*point))+'" style="text-anchor:end;font-size:'+(6*point)+';font-family:'+font+';">PERCENTAGE</text>';
-	svg += '<text stroke="none" fill="black" x="'+(center+2.5*1000*(contourInterval/((0.15)*scale)))+'" y="'+(4+2+(6*point))+'" style="text-anchor:start;font-size:'+(6*point)+';font-family:'+font+';">DEGREE</text>';
+	svg += '<text stroke="none" fill="black" x="'+center+'" y="4" text-anchor="middle" font-size="'+(9*point)+'" font-family="'+font+'" font-weight="bold">SLOPE GUIDE</text>';
+
+	svg += '<text stroke="none" fill="black" x="'+(center-2.5*1000*(contourInterval/((0.15)*scale)))+'" y="'+(4+2+(6*point))+'" text-anchor="end" font-size="'+(6*point)+'" font-family="'+font+'">PERCENTAGE</text>';
+	svg += '<text stroke="none" fill="black" x="'+(center+2.5*1000*(contourInterval/((0.15)*scale)))+'" y="'+(4+2+(6*point))+'" text-anchor="start" font-size="'+(6*point)+'" font-family="'+font+'">DEGREE</text>';
 
 	var d1 = 'M '+(center-2.5*1000*(contourInterval/((0.15)*scale)))+','+((7+(12*point)));
 	var d2 = 'M '+(center-1.5*1000*(contourInterval/((0.15)*scale)))+','+((7+(12*point)));
@@ -22,8 +22,8 @@ function slopeguide(scale,contourInterval){
 	var d6 = 'M '+(center+2.5*1000*(contourInterval/((0.15)*scale)))+','+((7+(12*point)));
 
 	for (var i=0; i<=10; i++){
-		svg += '<text stroke="none" fill="black" x="'+(center-2.5*1000*(contourInterval/((0.15-0.01*i)*scale))-1)+'" y="'+((7+(12*point))+i*5)+'" style="text-anchor:end;font-size:'+(6*point)+';font-family:'+font+';">'+(15-i)+'%</text>';
-		svg += '<text stroke="none" fill="black" x="'+(center+2.5*1000*(contourInterval/((0.15-0.01*i)*scale))+1)+'" y="'+((7+(12*point))+i*5)+'" style="text-anchor:start;font-size:'+(6*point)+';font-family:'+font+';">'+(Math.atan(0.15-0.01*i)/(Math.PI/180)).toFixed(1)+'°</text>';
+		svg += '<text stroke="none" fill="black" x="'+(center-2.5*1000*(contourInterval/((0.15-0.01*i)*scale))-1)+'" y="'+((7+(12*point))+i*5)+'" text-anchor="end" font-size="'+(6*point)+'" font-family="'+font+'">'+(15-i)+'%</text>';
+		svg += '<text stroke="none" fill="black" x="'+(center+2.5*1000*(contourInterval/((0.15-0.01*i)*scale))+1)+'" y="'+((7+(12*point))+i*5)+'" text-anchor="start" font-size="'+(6*point)+'" font-family="'+font+'">'+(Math.atan(0.15-0.01*i)/(Math.PI/180)).toFixed(1)+'°</text>';
 
 		svg += '<path stroke="black" fill="none" stroke-width="0.1" d="M '+(center-2.5*1000*(contourInterval/((0.15-0.01*i)*scale)))+','+((7+(12*point))+i*5)+' l '+(5*1000*(contourInterval/((0.15-0.01*i)*scale)))+',0" />';
 
